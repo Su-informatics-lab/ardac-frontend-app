@@ -6,8 +6,10 @@ export default function Document() {
   return (
     <Html lang="en" {...mantineHtmlProps}>
       <Head>
-        <title>ARDaC: AlcHepNet Research Data Commons</title>
-        <link rel="icon" href="/ff/icons/favicon.ico" />
+        <link
+          rel="icon"
+          href={`${process.env.BASE_PATH || ''}/icons/favicon.ico`}
+        />
         <ColorSchemeScript defaultColorScheme="auto" />
       </Head>
       <body>

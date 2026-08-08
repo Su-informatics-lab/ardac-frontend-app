@@ -12,7 +12,8 @@ Keep `main` deployable. Make ARDaC changes and upstream updates on feature branc
 ## ARDaC-owned changes
 
 - `Dockerfile.config` builds Next.js with `BASE_PATH=/ff`.
-- `src/pages/_document.tsx` supplies the ARDaC page title and `/ff` favicon URL.
+- `src/pages/_app.tsx` supplies the default ARDaC page title.
+- `src/pages/_document.tsx` supplies the favicon URL using the configured `BASE_PATH`.
 - Runtime content, branding, and theme configuration remain in `Su-informatics-lab/gen3-config`.
 
 ## Bringing in upstream changes

@@ -1,4 +1,5 @@
 import App, { AppProps, AppContext, AppInitialProps } from 'next/app';
+import Head from 'next/head';
 import React, { useState, useEffect, useRef, Suspense } from 'react';
 import { MantineProvider, mergeThemeOverrides } from '@mantine/core';
 
@@ -103,6 +104,9 @@ const Gen3App = ({
 
   return (
     <React.Fragment>
+      <Head>
+        <title>ARDaC: AlcHepNet Research Data Commons</title>
+      </Head>
       {isClient ? (
         <Suspense fallback={<Loading />}>
           {publicConfig?.dataDogAppId != null &&
