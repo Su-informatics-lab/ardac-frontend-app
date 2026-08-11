@@ -34,12 +34,12 @@ This documentation is currently less complete than we would like, but we will be
 
 ## Installation
 
-The minimum node version is set to v24.15.0.
+The minimum node version is set to v24.18.0.
 Node can be downloaded from the official Node.js site. You may also consider using a [Node version manager](https://docs.npmjs.com/cli/v7/configuring-npm/install#using-a-node-version-manager-to-install-nodejs-and-npm).
 Your version of Node may not ship with npm v24. To install it, run:
 
 ```bash
-npm install npm@11.9.2 -g
+npm install npm@11.16.0 -g
 ```
 
 Note: if you see this error:
@@ -51,7 +51,7 @@ you can run ```npx next telemetry disable```
 
 Alternatively, you can use `nvm` to install the correct version of npm:
 ```bash
-nvm install 24.15.0
+nvm install 24.18.0
 ```
 
 ### Install Dependencies
