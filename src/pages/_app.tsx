@@ -32,6 +32,9 @@ import drsHostnames from '../../config/drsHostnames.json';
 import { loadContent } from '@/lib/content/loadContent';
 import Loading from '../components/Loading';
 import DatadogInit from '@/components/DatadogInit';
+import DictionaryVersionFooter, {
+  type DictionaryVersionFooterConfig,
+} from '@/components/DictionaryVersionFooter';
 
 if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'production') {
   // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
@@ -68,6 +71,14 @@ const Gen3App = ({
   protectedRoutes,
   publicConfig,
 }: AppProps & Gen3AppProps) => {
+  const dictionaryVersionConfig = (
+    pageProps as {
+      footerProps?: {
+        dictionaryVersion?: DictionaryVersionFooterConfig;
+      };
+    }
+  ).footerProps?.dictionaryVersion;
+
   const isFirstRender = useRef(true);
   const [mantineTheme, setMantineTheme] =
     useState<Partial<ReturnType<typeof mergeThemeOverrides>>>();
@@ -125,6 +136,9 @@ const Gen3App = ({
               protectedRoutesConfig={protectedRoutes}
             >
               <Component {...pageProps} />
+              {dictionaryVersionConfig && (
+                <DictionaryVersionFooter {...dictionaryVersionConfig} />
+              )}
             </Gen3Provider>
           </MantineProvider>
         </Suspense>
