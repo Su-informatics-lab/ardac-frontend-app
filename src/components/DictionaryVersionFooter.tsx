@@ -27,14 +27,17 @@ const DictionaryVersionFooter = ({
 
   useEffect(() => {
     if (!enabled) {
+      setFooterLayout(null);
       return;
     }
 
-    const updateFooterLayout = () => setFooterLayout(findFooterLayout());
-    updateFooterLayout();
+    setFooterLayout(findFooterLayout());
+  });
 
-    const footerObserver = new MutationObserver(updateFooterLayout);
-    footerObserver.observe(document.body, { childList: true, subtree: true });
+  useEffect(() => {
+    if (!enabled) {
+      return;
+    }
 
     const abortController = new AbortController();
 
@@ -64,10 +67,7 @@ const DictionaryVersionFooter = ({
 
     void loadDictionaryVersion();
 
-    return () => {
-      footerObserver.disconnect();
-      abortController.abort();
-    };
+    return () => abortController.abort();
   }, [enabled]);
 
   if (!enabled || !footerLayout || !dictionaryVersion) {
